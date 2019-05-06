@@ -5,10 +5,12 @@ export class Walls extends Util {
   constructor(walls = []){
     super();
     this.walls = [
-      ...(walls || []) 
+      ...(walls || [])
     ];
-  }
 
+    this.width = 0;
+    this.heigth = 0;
+  }
 
   add(wall) {
     this.walls.push(wall);
@@ -23,7 +25,6 @@ export class Walls extends Util {
     let distance = Infinity;
     let ret  = null;
 
-
     for (let wallIndex = 0; wallIndex < this.walls.length; wallIndex++) {
       let wall = this.walls[wallIndex];
       var result = this.checkIntersection(wall, x1,y1,x2,y2);
@@ -35,13 +36,13 @@ export class Walls extends Util {
           distance = d;
           ret = result.point;
         }
-        
+
       }
     }
 
     return ret;
   }
-  
+
   draw() {
     for (let wallIndex = 0; wallIndex < this.walls.length; wallIndex++) {
       let wall = this.walls[wallIndex];
